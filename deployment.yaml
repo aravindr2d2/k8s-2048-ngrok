@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-2048
+  labels:
+    app: 2048
+    namespace: game-2048
+spec:
+  selector:
+    matchLabels:
+    app: 2048
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: 2048
+    spec:
+      containers:
+        - name: 2048-game
+          image: marcincuber/2048-game
